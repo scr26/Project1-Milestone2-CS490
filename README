@@ -1,0 +1,97 @@
+Detailed instructions on how to get Milestone 2 working For Project 1 CS490 
+
+pip install tweepy(name of API)
+# we need tweepy to gather tweets from Twitter
+
+apply for twitter developer account once approved note down the consumer key, secret key, token, secret token
+
+you don't want to put those keys in your main py file as anyone that has access to those keys can get access to your twitter account.
+
+Solution: put all keys in an .env file and link them with the main py file (milestone1.py)
+
+using os.environ put in all the keys to respective variables
+
+Twitter uses OAuthHandler to authenticate keys make sure you import all necessary libraries
+ex: tweepy, webbrowser, time flask, os, random, dotenv, join from os.path, OAuthHandler from tweepy, Cursor from tweepy, datetime, date, time, timeDelta from datetime
+
+Now it's time create simple flask application
+
+app = flask.Flask(__name__)
+ 
+@app.route('/')
+
+line 19 and line 21 create a simmple flask application
+
+Now create a function where you implement all tweepy functions needed for milestone 1
+
+create a list with 10 or so food items
+
+using the random module choose a random item from the above list
+
+Now using search function find all tweets related to that random item
+
+You will receive thousands of tweets. Choose a random tweet by indexing a random number and that will be your tweet that you will display
+
+use .created_at to find the time/date of when it was tweeted
+
+use user.screen_name to find the screen name of who tweeted it
+
+use user.name to find the actuall name of the person who tweeted it
+
+use user.url to find the link of the tweet 
+
+Make sure all above are stored in some variable
+
+Now when returning for the function make sure to use flask.render_template() with index.html as the first parameter and the above variables just created followed by that
+
+make sure to put var=var when doing it though for each one
+
+ex: text = text,
+    date = date,
+
+
+/////// Index.html Info /////////
+
+create proper html format
+
+link CSS file using the link tag # More info on the CSS Part Below
+
+Now those variables that you made in the .py file display them in the html by using {{ var }} with var == to whatever variable you need to put there
+
+
+/// CSS info ///
+
+Create separate CSS stylesheet make sure to put in a directory that is in the Project 1 Folder 
+
+Use Below line to link CSS style sheet with HTML 
+
+<link rel="stylesheet" href= {{ url_for('static',filename='style.css') }} />
+
+for each parts of the html style however you like 
+
+ex: 
+
+body {
+
+  some style
+  
+  
+}
+
+p {
+
+
+  some style
+  
+}
+
+# Things that I had trouble on
+
+This is the first project where I really dived into API's other than the quick crash course that we had in class I didn't really have any idea on what an API really was before this project
+
+In the beginning I was making too many API calls with Tweepy where I was being timed out. I worked around this as I would run the API once and then get the result and then focus on other things and comment 
+out the API execution(putting it into a variable) and when everything was done I would uncomment out the API execution.
+
+Next, was getting the images for the website. Now I know this was supposed to be one of the easiest parts of the project inputting images, but every command and python line I used wasn't working wget, urllib.request, withsource. I finally
+was able to get around it by just putting the link to the website in the html img tag. See whenever I used wget or urllib.request it would block with the flask and create some problem.
+
