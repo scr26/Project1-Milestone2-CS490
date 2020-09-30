@@ -1,2 +1,1 @@
-
-web: gunicorn --bind 0.0.0.0:$PORT milestone2.py:app
+web: python milestone2.py
